@@ -10,7 +10,7 @@ import cors from 'cors';
 
 const app = express()
 app.use(cors());
-const port = 3000;
+const port = 3001;
 
 app.use(express.json({limit: '50mb'}));
 app.use('/apicreditos/user', user);
