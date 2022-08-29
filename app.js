@@ -3,20 +3,23 @@ import user from './routers/user.routes.js';
 import client from './routers/client.routes.js'
 import state from './routers/state.routes.js'
 import municipality from './routers/municipality.routes.js'
+import main from './routers/main.routes.js';
 import { createConnection } from 'mysql';
 import {conexion}  from "./database/MySQL.database.js"
 import cors from 'cors';
 
 const app = express()
 app.use(cors());
-const port = 3001
+const port = 3000;
 
 app.use(express.json({limit: '50mb'}));
 app.use('/apicreditos/user', user);
 app.use('/apicreditos/client', client);
 app.use('/apicreditos/states', state);
-
 app.use('/apicreditos/municipality', municipality);
+app.use('/', main);
+
+
 
 const connection = createConnection(conexion);
 connection.connect(function(error) {
