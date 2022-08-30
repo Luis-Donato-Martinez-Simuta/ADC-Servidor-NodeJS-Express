@@ -3,15 +3,11 @@
   "version": "1.0.0",
   "description": "Aplicacion para la administracion de Creditos",
   "main": "app.js",
-  "type": "module",
+  
   "scripts": {
     "dev": "nodemon app.js",
-    "start": "node app.js",
-    "build": "babel src -d dist",
-    "postinstall": "npm run build"
+    "start": "nodemon --exec babel-node app.js"
   },
-
-
   "author": "Antonio Fransisco Martinez Simuta.",
   "license": "ISC",
   "dependencies": {
@@ -20,11 +16,5 @@
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.19"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
-    "babel-register": "^6.26.0"
   }
 }
