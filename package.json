@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Aplicacion para la administracion de Creditos",
   "main": "app.js",
-  "type": "module",
+  
   "scripts": {
     "dev": "nodemon app.js",
-    "start": "node app.js"
+    "start": "nodemon --exec babel-node app.js"
   },
   "author": "Antonio Fransisco Martinez Simuta.",
   "license": "ISC",
