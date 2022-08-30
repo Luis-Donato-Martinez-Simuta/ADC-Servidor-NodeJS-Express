@@ -1,5 +1,5 @@
-module.exports ={
-    server : {
-        PORT : 3001,
+module.exports = {
+    server: {
+        PORT: 3001,
     }
 }

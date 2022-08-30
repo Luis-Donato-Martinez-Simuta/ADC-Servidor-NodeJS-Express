@@ -5,8 +5,8 @@ const createConnection = database.createConnection;
 
 const _create_cliente = (client, callback) => {
 
-    let sql = 
-    `
+    let sql =
+        `
     CALL client_new(
         '${client.sucursalCliente}', 
         ${client.IdTipoPersonaCliente}, 
@@ -71,7 +71,7 @@ const _create_cliente = (client, callback) => {
     )
     `
     let connection = createConnection(conexion);
-    console.log("????",client.mesesConyugueCliente);
+    console.log("????", client.mesesConyugueCliente);
     console.log(sql);
     connection.query(sql, (err, data) => {
         if (err) {
@@ -197,8 +197,8 @@ const _genero_list = (callback) => {
 
 const _update_client = (client, callback) => {
 
-    let sql = 
-    `
+    let sql =
+        `
     CALL client_upDate(
         '${client.IdCliente}', 
         '${client.sucursalCliente}', 

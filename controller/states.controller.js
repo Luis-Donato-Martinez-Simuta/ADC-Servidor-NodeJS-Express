@@ -1,4 +1,4 @@
-const stateModel = require( '../model/state.model')
+const stateModel = require('../model/state.model')
 
 const getAllStates = async (req, res) => {
     stateModel._getAllStates((data) => {

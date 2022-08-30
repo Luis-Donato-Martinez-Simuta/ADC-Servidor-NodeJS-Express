@@ -1,6 +1,6 @@
 var userModel = require('../model/user.model')
 var jwt = require('jsonwebtoken')
-
+var middlewareUser = require('../middleware/user.middleware')
 
 const create_user = async (req, res) => {
 
@@ -60,7 +60,6 @@ const update_user = async (req, res) => {
         status: req.body.status
     }
 
-    console.log(user);
 
 
     userModel._update_user(user, (data) => {
@@ -142,7 +141,9 @@ const all_User = async (req, res) => {
 const login = async (req, res) => {
 
     let username = req.body.username
-    let password = req.body.password
+    let password = middlewareUser.hashing(req.body.password);
+
+    console.log(password);
 
     try {
         userModel.login_user(username, password, (data) => {
@@ -150,28 +151,39 @@ const login = async (req, res) => {
             //console.log(user);
             if (user) {
 
-                jwt.sign({
-                    user
-                }, "SECRET", {
-                    expiresIn: '3h'
-                }, (err, token) => {
-                    if (err) {
-                        res.json({
-                            error: true,
-                            tipoError: 403,
-                            mesage: "Error en el servidor",
-                        });
-                    } else {
-                        user.token = token;
-                        return res.json({
-                            error: false,
-                            status: 200,
-                            menssage: "Usuario encontrado",
-                            user,
-                            //token
-                        });
-                    }
-                });
+                if (user.status == 1) {
+                    jwt.sign({
+                        user
+                    }, "SECRET", {
+                        expiresIn: '3h'
+                    }, (err, token) => {
+                        if (err) {
+                            res.json({
+                                error: true,
+                                tipoError: 403,
+                                mesage: "Error en el servidor",
+                            });
+                        } else {
+                            user.token = token;
+                            return res.json({
+                                error: false,
+                                status: 200,
+                                menssage: "Usuario encontrado",
+                                user,
+                                //token
+                            });
+                        }
+                    });
+                } else {
+                    return res.json({
+                        error: false,
+                        status: 202,
+                        menssage: "Usuario no activo",
+                        user: []
+                    });
+                }
+
+
 
             } else {
                 return res.json({
@@ -241,6 +253,5 @@ module.exports = {
     delete_user,
     update_user,
     user_By_IdUser,
-    
-};
 
+};
