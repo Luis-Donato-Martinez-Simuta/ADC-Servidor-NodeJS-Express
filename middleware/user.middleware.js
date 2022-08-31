@@ -1,6 +1,8 @@
 var jwt = require('jsonwebtoken')
 const md5 = require('md5')
 
+const {secret} = require('../config/server.config');
+
 const hashing = (password) => {
   let hashPassword = '$@' + password + '#$'
   return md5(hashPassword)
@@ -14,7 +16,7 @@ function verifyToken(req, res, next) {
 
   if (typeof token != undefined) {
 
-    jwt.verify(token, "SECRET", (err, decoded) => {
+    jwt.verify(token, secret, (err, decoded) => {
       if (err) {
         res.status(403).send({
           error: false,
