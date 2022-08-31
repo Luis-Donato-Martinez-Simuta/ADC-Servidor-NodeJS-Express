@@ -1,7 +1,7 @@
 var userModel = require('../model/user.model')
 var jwt = require('jsonwebtoken')
 var middlewareUser = require('../middleware/user.middleware')
-
+const {secret} = require('../config/server.config');
 const create_user = async (req, res) => {
 
     let user = {
@@ -151,10 +151,10 @@ const login = async (req, res) => {
             //console.log(user);
             if (user) {
 
-                if (user.status == 1) {
+                if(user.status == 1){
                     jwt.sign({
                         user
-                    }, "SECRET", {
+                    }, secret, {
                         expiresIn: '3h'
                     }, (err, token) => {
                         if (err) {
@@ -174,7 +174,7 @@ const login = async (req, res) => {
                             });
                         }
                     });
-                } else {
+                }else{
                     return res.json({
                         error: false,
                         status: 202,
@@ -253,5 +253,6 @@ module.exports = {
     delete_user,
     update_user,
     user_By_IdUser,
-
+    
 };
+

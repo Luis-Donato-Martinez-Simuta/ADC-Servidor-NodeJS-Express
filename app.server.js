@@ -9,6 +9,9 @@ const user = require('./routes/users.routes');
 const client = require('./routes/client.routes');
 const state = require('./routes/state.routes');
 const municipality = require('./routes/municipality.routes');
+const index = require('./routes/index.routes');
+
+
 const app = express();
 
 
@@ -31,6 +34,7 @@ app.use('/api/user', user);
 app.use('/api/client', client);
 app.use('/api/states', state);
 app.use('/api/municipality', municipality);
+app.use('/', index);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
