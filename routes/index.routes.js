@@ -7,7 +7,7 @@ const index = (req, res) => {
 
 
 router.get('/', function(req,res) {
-    res.render("homePage");
+    res.render("index");
 });
 
 

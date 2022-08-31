@@ -1,5 +1,23 @@
-extends layout
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Landing Page con efecto Parallax - MagtimusPro
+  script(src='https://kit.fontawesome.com/41bcea2ae3.js' crossorigin='anonymous')
+  link(rel='stylesheet' href='/stylesheets/index.css')
 
-block content
-  h1= title
-  p Welcome to #{title}
+main
+  .cover
+    .text__information-cover
+      h1 API-REST funciononando Correctamente
+      p
+        | Api desarrollada por el area de desarrollo de software de GPM, Trabajando para ti
+      //
+        <div class="buttons__cover">
+        <input type="button" class="btn__register-cover" value="Registrarse">
+        <input type="button" class="btn__readMore-cover" value="Leer más">
+        </div>
+    .media__cover
+      video(src='/media/animacion_cover.webm' autoplay='' playinline='' loop='' muted='' preload='auto')
+
