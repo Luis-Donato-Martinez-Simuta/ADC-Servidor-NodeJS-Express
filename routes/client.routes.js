@@ -3,7 +3,7 @@ var router = express.Router();
 const clientController = require('../controller/client.controller');
 var {
     verifyToken
-} = require("../middleware/user.middleware");
+} = require("../middleware/user.middleware");   
 
 router.post('/create_client', verifyToken, clientController.create_client);
 router.get('/client_all', verifyToken, clientController.client_all);

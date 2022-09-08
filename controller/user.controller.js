@@ -155,7 +155,7 @@ const login = async (req, res) => {
                     jwt.sign({
                         user
                     }, secret, {
-                        expiresIn: '3h'
+                        expiresIn: '24h'
                     }, (err, token) => {
                         if (err) {
                             res.json({

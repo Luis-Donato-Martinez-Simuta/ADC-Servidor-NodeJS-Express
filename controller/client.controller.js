@@ -151,7 +151,7 @@ const update_client = async (req, res) => {
 
     let client = req.body;
 
-    console.log("IdEstadoNegocioCliente: ", client.IdEstadoNegocioCliente);
+    console.log("IdLocalidadDomicilioCliente: ", client.IdLocalidadDomicilioCliente);
 
 
     clientModel._update_client(client, (data) => {

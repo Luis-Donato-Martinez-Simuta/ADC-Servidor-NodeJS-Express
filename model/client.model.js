@@ -260,13 +260,15 @@ const _update_client = (client, callback) => {
         '${client.localidadDomicilioCliente}',
         '${client.codigoPostalNegocioCliente}', 
         '${client.domicilioNegocioCliente}', 
-        '${client.numeroTelefonoNegocioCliente}'
+        '${client.numeroTelefonoNegocioCliente}',
+        '${client.IdLocalidadDomicilioCliente}',
+        '${client.IdLocalidadNegocioCliente}'
     )
     `
 
 
     let connection = createConnection(conexion);
-    //console.log(sql);
+    console.log(sql);
     connection.query(sql, [], (err, data) => {
         //console.log(err);
         if (err) {
