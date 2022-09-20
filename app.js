@@ -10,6 +10,8 @@ const client = require('./routes/client.routes');
 const state = require('./routes/state.routes');
 const municipality = require('./routes/municipality.routes');
 const index = require('./routes/index.routes');
+const location = require('./routes/location.routes');
+const credito = require('./routes/credito.routes');
 
 
 const app = express();
@@ -34,6 +36,8 @@ app.use('/api/user', user);
 app.use('/api/client', client);
 app.use('/api/states', state);
 app.use('/api/municipality', municipality);
+app.use('/api/location', location);
+app.use('/api/credito', credito);
 app.use('/', index);
 
 // catch 404 and forward to error handler
