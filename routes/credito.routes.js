@@ -14,5 +14,4 @@ router.get('/creditos_sinaprobar_list', verifyToken, creditoController.creditos_
 
 router.post('/credito_update_status', verifyToken, creditoController.credito_update_status);
 
-
 module.exports = router;    

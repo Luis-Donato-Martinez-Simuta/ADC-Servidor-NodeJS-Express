@@ -7,19 +7,19 @@ const crear_solicitud_credito = async (req, res) => {
     let {detalle} = req.body;
     let {IdUsuario} = req.body;
     let otherEncabezado = req.body.otherData;
-    console.log(otherEncabezado);
+    //console.log(encabezado);
 
     //console.log(encabezado);
     //console.log(detalle);
 
     await creditoModel._creaar_solicitud_credito_encabezado(encabezado,otherEncabezado,IdUsuario,(data)=>{
-        console.log(data);
-        IdCredito = data[0].IdCredito
-
+        
+        let IdCredito = data[0].IdCredito
+        
         for (let i = 0; i < detalle.length; i++) {  
-            //console.log(detalle[i]);
+            
             creditoModel._creaar_solicitud_credito_detalle(detalle[i],IdCredito,(data)=>{
-                console.log(data);
+                
             });
             
         }
@@ -39,7 +39,7 @@ const bucar_credito_por_Id = async (req, res) => {
     console.log(IdCredito);
     
     creditoModel._bucar_credito_por_Id(IdCredito, (data)=>{
-        //console.log(data);
+        
         let credito = data;
 
         res.status(200).json({
@@ -62,7 +62,7 @@ const creditos_sinaprobar_list = async (req, res) => {
 }
 
 const credito_update_status = async (req, res) => {
-    //let {data} = req.body;
+    
     let data = {
         IdCredito : req.body.IdCredito,
         status : req.body.status

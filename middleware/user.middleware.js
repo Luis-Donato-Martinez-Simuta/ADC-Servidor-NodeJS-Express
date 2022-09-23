@@ -14,6 +14,9 @@ function verifyToken(req, res, next) {
     token
   } = req.headers;
 
+  ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+
+  console.log(ip);
   if (typeof token != undefined) {
 
     jwt.verify(token, secret, (err, decoded) => {

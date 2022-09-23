@@ -5,7 +5,7 @@ const conexion = database.conexion;
 const _creaar_solicitud_credito_encabezado = (encabezado,otherEncabezado, IdUsuario, callback) => {
 
 
-    let sql = `call credito_crear_solicitus_encabezado(  
+    let sql = `call credito_crear_solicitus(  
                                     ${encabezado.IdCliente}, 
                                     ${encabezado.monto},  
                                     ${encabezado.tasaMensual}, 
@@ -18,11 +18,12 @@ const _creaar_solicitud_credito_encabezado = (encabezado,otherEncabezado, IdUsua
                                     ${encabezado.iva} , 
                                     ${encabezado.total},
                                     ${IdUsuario},
-                                    ${otherEncabezado.formaPago},
-                                    ${otherEncabezado.tipoMoneda},
+                                    ${otherEncabezado.IdFormaPago},
+                                    ${otherEncabezado.IdTipoMoneda},
                                     ${otherEncabezado.montoPago} 
                                             )`;
-
+    
+    console.log(sql);
     let connection = createConnection(conexion);
 
     connection.query(sql, (err, data) => {
@@ -56,7 +57,7 @@ const _creaar_solicitud_credito_detalle = (detalle,IdCredito, callback) => {
                 )`;
 
     let connection = createConnection(conexion);
-
+    
     connection.query(sql, (err, data) => {
         if (err) {
             console.log(err);
