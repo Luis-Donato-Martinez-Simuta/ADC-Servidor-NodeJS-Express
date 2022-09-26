@@ -3,16 +3,18 @@ const creditoModel = require('../model/Credito.model');
 const crear_solicitud_credito = async (req, res) => {
     
 
-    let {encabezado} = req.body;
+    let {encabezado,nuevoGranTotal} = req.body;
     let {detalle} = req.body;
     let {IdUsuario} = req.body;
     let otherEncabezado = req.body.otherData;
-    //console.log(encabezado);
+    console.log("Creando");
+    console.log(encabezado);
 
     //console.log(encabezado);
     //console.log(detalle);
 
-    await creditoModel._creaar_solicitud_credito_encabezado(encabezado,otherEncabezado,IdUsuario,(data)=>{
+
+    await creditoModel._creaar_solicitud_credito_encabezado(encabezado,otherEncabezado,IdUsuario,nuevoGranTotal,(data)=>{
         
         let IdCredito = data[0].IdCredito
         
@@ -27,6 +29,45 @@ const crear_solicitud_credito = async (req, res) => {
         res.status(200).json({
             status:200,
             IdCredito
+        })
+    });
+
+
+
+}
+
+const credito_actualizar_solicitus = async (req, res) => {
+    
+
+    let {encabezado,nuevoGranTotal} = req.body;
+    let {detalle} = req.body;
+    let {IdUsuario} = req.body;
+    let otherEncabezado = req.body.otherData;
+    //console.log(encabezado);
+
+    //console.log(encabezado);
+    //console.log(detalle);
+    console.log("Actualizando");
+
+    await creditoModel._credito_actualizar_solicitus(encabezado,otherEncabezado,IdUsuario,nuevoGranTotal,(data)=>{
+        
+        let IdCredito = encabezado.IdCredito
+        //console.log(IdCredito);
+
+        creditoModel._eliminar_solicitud_detalle_byIdEncebezado(IdCredito, (data)=>{
+            console.log(data);
+            for (let i = 0; i < detalle.length; i++) {              
+                creditoModel._credito_actualizar_solicitus_detalle(detalle[i],IdCredito,(data)=>{
+                    console.log(data);
+                });                
+            }
+        });
+
+
+
+        res.status(200).json({
+            status:200,
+            IdCredito : IdCredito,
         })
     });
 
@@ -78,9 +119,37 @@ const credito_update_status = async (req, res) => {
     });
 }
 
+const credito_eliminar_encabezado_y_detalle_byId = async (req, res) => {
+    
+    let {IdCredito} = req.params;
+
+    if (!isNaN(IdCredito)) {
+        creditoModel._credito_eliminar_encabezado_y_detalle_byId(IdCredito, (data) =>{
+            console.log(data);
+            let status = data[0].status;
+            console.log(status);
+            res.status(200).json({
+                error : false,
+                status,
+                message: "Solicitud de credito eliminada."
+            })
+        });
+    }else{
+        return res.status(500).json({
+            error: false,
+            status: 240,
+            menssage: "El parametro que mandas como Id no es numerico",
+        });
+    }
+
+
+}
+
 module.exports = {
     crear_solicitud_credito,
     bucar_credito_por_Id,
     creditos_sinaprobar_list,
-    credito_update_status
+    credito_update_status,
+    credito_actualizar_solicitus,
+    credito_eliminar_encabezado_y_detalle_byId
 };
