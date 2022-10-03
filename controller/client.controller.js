@@ -190,8 +190,8 @@ const delete_client = async (req, res) => {
 
     clientModel._delete_client(IdCliente, (data => {
 
-        let status = data.status;
-        //console.log(status);
+        let status = data[0].status;
+        console.log(status);
 
         return res.json({
             error: false,
@@ -202,12 +202,12 @@ const delete_client = async (req, res) => {
 
     }))
 
-    return res.json({
-        error: true,
-        status: 500,
-        menssage: "Error en el servidor",
-        error: error.toString()
-    });
+    // return res.json({
+    //     error: true,
+    //     status: 500,
+    //     menssage: "Error en el servidor",
+    //     //error: error.toString()
+    // });
 
 }
 

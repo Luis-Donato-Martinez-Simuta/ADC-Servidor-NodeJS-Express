@@ -18,4 +18,6 @@ router.post('/credito_update_status', verifyToken, creditoController.credito_upd
 
 router.delete('/credito_eliminar_encabezado_y_detalle_byId/:IdCredito', verifyToken, creditoController.credito_eliminar_encabezado_y_detalle_byId);
 
+router.post('/credito_buscar', verifyToken, creditoController.credito_buscar);
+
 module.exports = router;    

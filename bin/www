@@ -27,6 +27,7 @@ var server = http.createServer(app);
  */
 
 server.listen(port, () => {
+  console.clear()
   console.log(`Servidor corriendo en el puerto ${port}`);
 });
 server.on('error', onError);

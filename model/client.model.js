@@ -67,11 +67,14 @@ const _create_cliente = (client, callback) => {
         '${client.localidadDomicilioCliente}',
         '${client.codigoPostalNegocioCliente}', 
         '${client.domicilioNegocioCliente}', 
-        '${client.numeroTelefonoNegocioCliente}'
+        '${client.numeroTelefonoNegocioCliente}',
+         ${client.IdLocalidadDomicilioCliente},
+         ${client.IdLocalidadNegocioCliente}
+         
     )
     `
     let connection = createConnection(conexion);
-    console.log("????", client.mesesConyugueCliente);
+    console.log("????", client.IdLocalidadNegocioCliente);
     console.log(sql);
     connection.query(sql, (err, data) => {
         if (err) {
@@ -289,6 +292,7 @@ const _update_client = (client, callback) => {
 const _delete_client = (IdUCliente, callback) => {
 
     let sql = 'call client_delete(' + IdUCliente + ')';
+    console.log(sql);
     let connection = createConnection(conexion);
 
     connection.query(sql, (err, data) => {

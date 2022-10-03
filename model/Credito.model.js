@@ -269,6 +269,29 @@ const _credito_eliminar_encabezado_y_detalle_byId = (IdCredito,callback) => {
 
 }
 
+
+const _credito_buscar = (data,callback) => {
+
+    let sql = `call credito_buscar(${data.tipoBusqueda},"%${data.value}%","%${data.value}%")`;
+    let connection = createConnection(conexion);
+    console.log(sql);
+    connection.query(sql, (err, data) => {
+        if (err) {
+            console.log(err);
+            connection.end();
+            return callback(-1);
+        };
+        if (data.length > 0) {
+            connection.end();
+            return callback(data[0])
+        };
+        connection.end();
+        return callback(null);
+
+    });
+
+}
+
 module.exports = {
     _creaar_solicitud_credito_encabezado,
     _creaar_solicitud_credito_detalle,
@@ -279,4 +302,5 @@ module.exports = {
     _credito_actualizar_solicitus_detalle,
     _eliminar_solicitud_detalle_byIdEncebezado,
     _credito_eliminar_encabezado_y_detalle_byId,
+    _credito_buscar,
 }
