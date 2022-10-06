@@ -12,6 +12,7 @@ const municipality = require('./routes/municipality.routes');
 const index = require('./routes/index.routes');
 const location = require('./routes/location.routes');
 const credito = require('./routes/credito.routes');
+const fichaPago = require('./routes/fichaPago.routes');
 
 
 const app = express();
@@ -38,6 +39,7 @@ app.use('/api/states', state);
 app.use('/api/municipality', municipality);
 app.use('/api/location', location);
 app.use('/api/credito', credito);
+app.use('/api/fichaPago', fichaPago);
 app.use('/', index);
 
 // catch 404 and forward to error handler
