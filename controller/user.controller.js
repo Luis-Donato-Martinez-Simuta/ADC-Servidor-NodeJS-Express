@@ -87,15 +87,14 @@ const update_user = async (req, res) => {
 
 const delete_user = async (req, res) => {
 
-    // console.log(req.params);
+
 
     let {
         IdUsuario
     } = req.params;
-    console.log("Eliminando usuario", req.params);
-
+ 
     userModel._delete_user(IdUsuario, (data => {
-        console.log(data);
+  
         if (data === -1) {
             return res.status(500).json({
                 error: true,
@@ -143,12 +142,11 @@ const login = async (req, res) => {
     let username = req.body.username
     let password = middlewareUser.hashing(req.body.password);
 
-    console.log(password);
 
     try {
         userModel.login_user(username, password, (data) => {
             let user = data[0];
-            //console.log(user);
+          
             if (user) {
 
                 if(user.status == 1){
@@ -208,8 +206,7 @@ const login = async (req, res) => {
 
 const user_By_IdUser = async (req, res) => {
 
-    //console.log(req.params);
-
+   
     let {
         IdUsuario
     } = req.params;

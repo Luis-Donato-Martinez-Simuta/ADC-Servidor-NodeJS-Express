@@ -84,7 +84,7 @@ const _update_user = (user, callback) => {
         user.status +
         ')';
     let connection = createConnection(conexion);
-    console.log(sql);
+
     connection.query(sql, (err, data) => {
         if (err) {
             return callback(-1);
@@ -104,7 +104,7 @@ const _delete_user = (IdUsuario, callback) => {
 
     let sql = 'call user_delete(' + IdUsuario + ')';
     let connection = createConnection(conexion);
-    console.log(sql);
+
     connection.query(sql, [], (err, data) => {
         if (err) {
             return callback(-1);
@@ -123,7 +123,7 @@ const _delete_user = (IdUsuario, callback) => {
 const getUserById = (IdUsuario, callback) => {
 
     let sql = 'call user_listById(' + IdUsuario + ')';
-    // console.log(sql);
+
     let connection = createConnection(conexion);
 
     connection.query(sql, [], (err, data) => {

@@ -21,9 +21,7 @@ const _getAllStates = (callback) => {
         return callback(null);
 
     });
-
 }
-
 
 module.exports = {
     _getAllStates,

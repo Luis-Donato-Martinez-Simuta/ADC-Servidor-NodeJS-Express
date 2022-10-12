@@ -45,8 +45,80 @@ const ficha_pago_detalle_create = (IdFichaPago,detalle, callback) => {
 
     )`;
     let connection = createConnection(conexion);
-    console.log(sql);
+
     connection.query(sql, (err, data) => {
+        if (err) {
+            console.log(err);
+            connection.end();
+            return callback(-1);
+        };
+        if (data.length > 0) {
+            connection.end();
+            return callback(data[0])
+        };
+        connection.end();
+        return callback(null);
+
+    });
+
+}
+
+const ficha_pago_list = (callback) => {
+
+    let sql = `call ficha_pago_list()`;
+    let connection = createConnection(conexion);
+
+    connection.query(sql, (err, data) => {
+        if (err) {
+            console.log(err);
+            connection.end();
+            return callback(-1);
+        };
+        if (data.length > 0) {
+            connection.end();
+            return callback(data[0])
+        };
+        connection.end();
+        return callback(null);
+
+    });
+
+}
+
+
+const ficha_pago_updateDate = (fichaPago, callback) => {
+
+    let sql = `call ficha_pago_updateDate(
+        ${fichaPago.IdFichaPago},
+        '${fichaPago.fecha}'
+    )`;
+    let connection = createConnection(conexion);
+
+    connection.query(sql, (err, data) => {
+
+        if (err) {
+            console.log(err);
+            connection.end();
+            return callback(-1);
+        };
+        if (data.length > 0) {
+            connection.end();
+            return callback(data[0])
+        };
+        connection.end();
+        return callback(null);
+
+    });
+
+}
+
+const ficha_pago_list_ById = (IdFichaPago, callback) => {
+
+    let sql = `call ficha_pago_list_ById(${IdFichaPago})`;
+    let connection = createConnection(conexion);
+
+    connection.query(sql, (err, data) => {
+
         if (err) {
             console.log(err);
             connection.end();
@@ -65,5 +137,8 @@ const ficha_pago_detalle_create = (IdFichaPago,detalle, callback) => {
 
 module.exports = {
     ficha_pago_create,
-    ficha_pago_detalle_create
+    ficha_pago_detalle_create,
+    ficha_pago_list,
+    ficha_pago_updateDate,
+    ficha_pago_list_ById
 }

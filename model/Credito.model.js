@@ -48,7 +48,7 @@ const _creaar_solicitud_credito_encabezado = (encabezado,otherEncabezado, IdUsua
 
 const _credito_actualizar_solicitus = (encabezado,otherEncabezado, IdUsuario, nuevoGranTotal, callback) => {
 
-    //console.log(encabezado.IdCredito);
+   
     let sql = `call credito_actualizar_solicitus(  
                                     ${encabezado.IdCredito}, 
                                     ${encabezado.IdCliente}, 
@@ -69,7 +69,7 @@ const _credito_actualizar_solicitus = (encabezado,otherEncabezado, IdUsuario, nu
                                     ${nuevoGranTotal} 
                                             )`;
     
-    console.log(sql);
+    
     let connection = createConnection(conexion);
 
     connection.query(sql, (err, data) => {
@@ -91,10 +91,10 @@ const _credito_actualizar_solicitus = (encabezado,otherEncabezado, IdUsuario, nu
 
 const _eliminar_solicitud_detalle_byIdEncebezado = (IdCreditoEncabezado, callback) => {
 
-    //console.log(encabezado.IdCredito);
+   
     let sql = `call eliminar_solicitud_detalle_byIdEncebezado(${IdCreditoEncabezado})`;
     
-    console.log(sql);
+    
     let connection = createConnection(conexion);
 
     connection.query(sql, (err, data) => {
@@ -274,7 +274,7 @@ const _credito_buscar = (data,callback) => {
 
     let sql = `call credito_buscar(${data.tipoBusqueda},"%${data.value}%","%${data.value}%")`;
     let connection = createConnection(conexion);
-    console.log(sql);
+
     connection.query(sql, (err, data) => {
         if (err) {
             console.log(err);

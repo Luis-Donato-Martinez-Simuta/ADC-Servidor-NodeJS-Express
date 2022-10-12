@@ -7,6 +7,8 @@ const create_client = async (req, res) => {
 
     let client = req.body;
 
+    console.log(client.lugarNacimientoCliente);
+
     clientModel._create_cliente(client, (data) => {
 
         if (data === -1) {
@@ -150,10 +152,7 @@ const estudios_list = async (req, res) => {
 const update_client = async (req, res) => {
 
     let client = req.body;
-
-    console.log("IdLocalidadDomicilioCliente: ", client.IdLocalidadDomicilioCliente);
-
-
+    
     clientModel._update_client(client, (data) => {
         if (data === -1) {
 
@@ -181,7 +180,7 @@ const update_client = async (req, res) => {
 
 const delete_client = async (req, res) => {
 
-    // console.log(req.params);
+
 
     let {
         IdCliente
@@ -191,7 +190,7 @@ const delete_client = async (req, res) => {
     clientModel._delete_client(IdCliente, (data => {
 
         let status = data[0].status;
-        console.log(status);
+  
 
         return res.json({
             error: false,

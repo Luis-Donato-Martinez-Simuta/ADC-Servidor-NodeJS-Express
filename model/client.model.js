@@ -9,76 +9,76 @@ const _create_cliente = (client, callback) => {
         `
     CALL client_new(
         '${client.sucursalCliente}', 
-        ${client.IdTipoPersonaCliente}, 
-        '${client.nombreCliente}', 
-        '${client.paternoCliente}', 
-        '${client.maternoCliente}', 
-        '${client.fechaNacimientoCliente}', 
-        ${client.IdEstadoEntidadNacimientoCliente}, 
-        '${client.lugarNacimientoCliente}', 
-        ${client.IdTipoGeneroCliente}, 
-        ${client.IdEstadoCivilCliente}, 
-        ${client.IdEstudioCliente}, 
-        '${client.IFENumeroCliente}', 
-        '${client.IFEFolioCliente}',
-        '${client.IFEclaveCliente}',
-        '${client.CURPCliente}', 
-        '${client.RFCCliente}',
-        '${client.telefonoCliente}', 
-        '${client.celularCliente}', 
-        '${client.emailCliente}', 
-        ${client.IdNacionalidadCliente}, 
-        '${client.paisOrigenCliente}', 
-        ${client.IdPaisDomicilioCliente}, 
-        ${client.IdEstadoDomicilioCliente},
-        ${client.IdMunicipioDomicilioCliente},
-        '${client.localidadNegocioCliente}', 
-        '${client.domicilioCliente}', 
-        '${client.CodigoPostalDomicilioCliente}', 
-        ${client.IdTipoViviendaCliente},
-        '${client.ubicacionGPSCliente}',
-        '${client.nombreConyugueCliente}',
-        '${client.paternoConyugueCliente}',
-        '${client.puestoConyugueCliente}', 
-        '${client.maternoConyugueCliente}', 
-        '${client.lugarTrabajoConyugueCliente}',
-        '${client.antiguedadConyugueCliente}',
-        ${client.anosConyugueCliente}, 
-        ${client.mesesConyugueCliente},
-        '${client.descripcionNegocioCliente}',
-        '${client.expreienciaNegocioCliente}',
-        '${client.antigudadNegocioCliente}', 
-        ${client.pagoDiarioCliente}, 
-        ${client.abreLunes},
-        ${client.abreMartes}, 
-        ${client.abreMiercoles},
-        ${client.abreJueves},
-        ${client.abreViernes}, 
-        ${client.abreSabado},
-        ${client.abreDomingo}, 
-        '${client.telefonoNegocioCliente}',
-        '${client.horaAperturaCliente}',
-        '${client.horaCierreCliente}',
-        '${client.lugarNegocioCliente}', 
-        '${client.nombrePropietarioCliente}', 
-        ${client.IdPaisNegocioCliente}, 
-        ${client.IdEstadoNegocioCliente},
-        ${client.IdMunicipioNegocioCliente},
-        '${client.localidadDomicilioCliente}',
-        '${client.codigoPostalNegocioCliente}', 
-        '${client.domicilioNegocioCliente}', 
-        '${client.numeroTelefonoNegocioCliente}',
-         ${client.IdLocalidadDomicilioCliente},
-         ${client.IdLocalidadNegocioCliente}
-         
+		'${client.IdTipoPersonaCliente}',
+		'${client.nombreCliente}', 
+		'${client.paternoCliente}', 
+		'${client.maternoCliente}', 
+		'${client.fechaNacimientoCliente}',
+		'${client.IdEstadoEntidadNacimientoCliente}', 
+		'${client.lugarNacimientoCliente}',
+		'${client.IdTipoGeneroCliente}', 
+		'${client.IdEstadoCivilCliente}',
+		'${client.IdEstudioCliente}', 
+		'${client.IFENumeroCliente}', 
+		'${client.IFEFolioCliente}', 
+		'${client.IFEclaveCliente}', 
+		'${client.CURPCliente}', 
+		'${client.RFCCliente}', 
+		'${client.telefonoCliente}',
+		'${client.celularCliente}',
+		'${client.emailCliente}', 
+		'${client.IdNacionalidadCliente}',
+		'${client.paisOrigenCliente}', 
+		'${client.IdPaisDomicilioCliente}',
+		'${client.IdEstadoDomicilioCliente}',
+		'${client.IdMunicipioDomicilioCliente}',
+		'${client.IdLocalidadDomicilioCliente}', 
+		'${client.localidadNegocioCliente}', 
+		'${client.domicilioCliente}', 
+		'${client.CodigoPostalDomicilioCliente}', 
+		'${client.IdTipoViviendaCliente}',
+		'${client.ubicacionGPSCliente}',
+		'${client.nombreConyugueCliente}',
+		'${client.paternoConyugueCliente}', 
+		'${client.maternoConyugueCliente}', 
+		'${client.lugarTrabajoConyugueCliente}',
+		'${client.puestoConyugueCliente}', 
+		'${client.antiguedadConyugueCliente}', 
+		'${client.anosConyugueCliente}', 
+		'${client.mesesConyugueCliente}',
+		'${client.descripcionNegocioCliente}',
+		'${client.expreienciaNegocioCliente}', 
+		'${client.antigudadNegocioCliente}', 
+		'${client.pagoDiarioCliente}',
+		'${client.abreLunes}', 
+		'${client.abreMartes}',
+		'${client.abreMiercoles}', 
+		'${client.abreJueves}', 
+		'${client.abreViernes}', 
+		'${client.abreSabado}', 
+		'${client.abreDomingo}',
+		'${client.telefonoNegocioCliente}', 
+		'${client.horaAperturaCliente}',
+		'${client.horaCierreCliente}', 
+		'${client.lugarNegocioCliente}', 
+		'${client.nombrePropietarioCliente}', 
+		'${client.IdPaisNegocioCliente}', 
+		'${client.IdEstadoNegocioCliente}',
+		'${client.IdMunicipioNegocioCliente}',
+		'${client.IdLocalidadNegocioCliente}', 
+		'${client.localidadDomicilioCliente}', 
+		'${client.codigoPostalNegocioCliente}', 
+		'${client.domicilioNegocioCliente}', 
+		'${client.numeroTelefonoNegocioCliente}'
     )
     `
     let connection = createConnection(conexion);
-    console.log("????", client.IdLocalidadNegocioCliente);
+
     console.log(sql);
+
     connection.query(sql, (err, data) => {
         if (err) {
-            console.log(err);
+           
             return callback(-1);
         };
         if (data.length > 0) {
@@ -199,13 +199,13 @@ const _genero_list = (callback) => {
 
 
 const _update_client = (client, callback) => {
-
+    console.log(client.numeroTelefonoNegocioCliente);
     let sql =
         `
     CALL client_upDate(
         '${client.IdCliente}', 
         '${client.sucursalCliente}', 
-        ${client.IdTipoPersonaCliente}, 
+        ${client.IdTipoPersonaCliente.split(',')[0]}, 
         '${client.nombreCliente}', 
         '${client.paternoCliente}', 
         '${client.maternoCliente}', 
@@ -271,9 +271,9 @@ const _update_client = (client, callback) => {
 
 
     let connection = createConnection(conexion);
-    console.log(sql);
+
     connection.query(sql, [], (err, data) => {
-        //console.log(err);
+  
         if (err) {
             console.log(err);
             return callback(-1);
@@ -314,12 +314,12 @@ const _delete_client = (IdUCliente, callback) => {
 const _getClientById = (IdCliente, callback) => {
 
     let sql = 'call client_byId(' + IdCliente + ')';
-    // console.log(sql);
+
     let connection = createConnection(conexion);
 
     connection.query(sql, (err, data) => {
         if (err) {
-            //console.log(err);
+            console.log(err);
             return callback(-1);
         };
         if (data.length > 0) {
