@@ -7,8 +7,6 @@ const create_client = async (req, res) => {
 
     let client = req.body;
 
-    console.log(client.lugarNacimientoCliente);
-
     clientModel._create_cliente(client, (data) => {
 
         if (data === -1) {
@@ -334,6 +332,42 @@ const tipovivienda_list = async (req, res) => {
 
 }
 
+const client_buscar_por_nombre = async (req, res) => {
+
+    let nombreCliente = req.body.nombreCliente;
+
+    clientModel.client_buscar_por_nombre(nombreCliente,(data) => {
+
+        if (data === -1) {
+            return res.status(500).json({
+                error: true,
+                status: 500,
+                menssage: "Error en la peticion",
+            });
+        } else {
+            let listClients = data;
+            if (listClients) {
+                return res.status(200).json({
+                    error: false,
+                    status: 200,
+                    message: "Clientes encontrados",
+                    listClients,
+                });
+            } else {
+                return res.status(200).json({
+                    error: false,
+                    status: 200,
+                    menssage: "No se encontraron clientes",
+                    listClients : []
+                });
+            }
+        }
+
+
+    })
+
+
+}
 
 module.exports = {
     client_all,
@@ -345,4 +379,5 @@ module.exports = {
     getClientById,
     tipovivienda_list,
     update_client,
+    client_buscar_por_nombre,
 }

@@ -333,6 +333,29 @@ const _getClientById = (IdCliente, callback) => {
 
 }
 
+
+const client_buscar_por_nombre = (nombreCliente, callback) => {
+
+    let sql = `call client_buscar_por_nombre('%${nombreCliente}%')`;
+
+    let connection = createConnection(conexion);
+
+    connection.query(sql, (err, data) => {
+        if (err) {
+            console.log(err);
+            return callback(-1);
+        };
+        if (data.length > 0) {
+            connection.end();
+            return callback(data[0])
+        };
+        connection.end();
+        return callback(null);
+
+    });
+
+}
+
 module.exports = {
     _create_cliente,
     _delete_client,
@@ -343,4 +366,5 @@ module.exports = {
     _update_client,
     getAllClient,
     _tipovivienda_list,
+    client_buscar_por_nombre,
 }

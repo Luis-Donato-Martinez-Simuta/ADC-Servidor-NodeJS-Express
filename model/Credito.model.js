@@ -126,6 +126,7 @@ const _creaar_solicitud_credito_detalle = (detalle,IdCredito, callback) => {
         ${detalle.iva}, 
         ${detalle.total}
                 )`;
+    console.log(sql);
 
     let connection = createConnection(conexion);
     
@@ -202,9 +203,9 @@ const _bucar_credito_por_Id = (IdCredito, callback) => {
 
 }
 
-const _creditos_sinaprobar_list = (callback) => {
+const _creditos_sinaprobar_list = (tipoBusqueda, callback) => {
 
-    let sql = `call creditos_sinaprobar_list()`;
+    let sql = `call creditos_sinaprobar_list(${tipoBusqueda.tipo},'%${tipoBusqueda.referenciaBusqueda}%')`;
     let connection = createConnection(conexion);
 
     connection.query(sql, (err, data) => {
@@ -273,8 +274,11 @@ const _credito_eliminar_encabezado_y_detalle_byId = (IdCredito,callback) => {
 const _credito_buscar = (data,callback) => {
 
     let sql = `call credito_buscar(${data.tipoBusqueda},"%${data.value}%","%${data.value}%")`;
+    if(data.tipoBusqueda == 3){
+        sql = `call credito_buscar(${data.tipoBusqueda},"${data.value}","${data.value}")`;
+    }
     let connection = createConnection(conexion);
-
+    
     connection.query(sql, (err, data) => {
         if (err) {
             console.log(err);
@@ -291,6 +295,62 @@ const _credito_buscar = (data,callback) => {
     });
 
 }
+const _credito_detalle_list_ById = (IdCredito, callback) => {
+    
+    let sql = `call credito_detalle_list_ById(${IdCredito})`;   
+    
+    let connection = createConnection(conexion);
+
+    connection.query(sql, (err, data) => {
+        if (err) {
+            console.log(err);
+            return callback(-1);
+        };
+        if (data.length > 0) {
+            connection.end();
+            return callback(data[0])
+        };
+        connection.end();
+        return callback(-1);
+
+    });
+
+}
+
+const pagarCuota = (cuota, callback) => {
+    
+    let sql = `call pagarCuota(
+
+        ${cuota.IdCreditoDetalle} ,
+        ${cuota.capital} , 
+        ${cuota.interes} , 
+        ${cuota.iva} , 
+        ${cuota.total} , 
+        ${cuota.interesMoratorio} , 
+        ${cuota.ivaInteresMoratorio} , 
+        ${cuota.comision} , 
+        ${cuota.interesComision} ,
+        ${cuota.IdStatusPago} 
+
+    )`;   
+    console.log(sql);
+    let connection = createConnection(conexion);
+
+    connection.query(sql, (err, data) => {
+        if (err) {
+            console.log(err);
+            return callback(-1);
+        };
+        if (data.length > 0) {
+            connection.end();
+            return callback(data[0][0])
+        };
+        connection.end();
+        return callback(-1);
+
+    });
+
+}
 
 module.exports = {
     _creaar_solicitud_credito_encabezado,
@@ -303,4 +363,6 @@ module.exports = {
     _eliminar_solicitud_detalle_byIdEncebezado,
     _credito_eliminar_encabezado_y_detalle_byId,
     _credito_buscar,
+    _credito_detalle_list_ById,
+    pagarCuota,
 }

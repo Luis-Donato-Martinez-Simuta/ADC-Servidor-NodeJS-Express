@@ -15,4 +15,8 @@ router.get("/estados_civiles_list", verifyToken, clientController.estados_civile
 router.get("/estudios_list", verifyToken, clientController.estudios_list);
 router.get("/tipovivienda_list", verifyToken, clientController.tipovivienda_list);
 
+router.post("/client_buscar_por_nombre", verifyToken, clientController.client_buscar_por_nombre);
+
+
+
 module.exports = router;

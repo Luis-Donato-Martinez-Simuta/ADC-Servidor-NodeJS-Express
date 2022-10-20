@@ -10,6 +10,10 @@ router.post('/ficha_pago_create', verifyToken, fichaPagoController.ficha_pago_cr
 router.get('/ficha_pago_list', verifyToken, fichaPagoController.ficha_pago_list);
 router.post('/ficha_pago_updateDate', verifyToken, fichaPagoController.ficha_pago_updateDate);
 router.post('/ficha_pago_list_ById/:IdFichaPago', verifyToken, fichaPagoController.ficha_pago_list_ById);
+router.post('/ficha_pago_buscar', verifyToken, fichaPagoController.ficha_pago_buscar);
+router.post('/ficha_pago_pagar/:IdFichaPago', verifyToken, fichaPagoController.ficha_pago_pagar);
+
+
 
 
 

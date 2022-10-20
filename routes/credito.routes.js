@@ -12,12 +12,16 @@ router.put('/credito_actualizar_solicitus', verifyToken, creditoController.credi
 
 router.post('/bucar_credito_por_Id/:IdCredito', verifyToken, creditoController.bucar_credito_por_Id);
 
-router.get('/creditos_sinaprobar_list', verifyToken, creditoController.creditos_sinaprobar_list);
+router.post('/creditos_sinaprobar_list', verifyToken, creditoController.creditos_sinaprobar_list);
 
 router.post('/credito_update_status', verifyToken, creditoController.credito_update_status);
 
 router.delete('/credito_eliminar_encabezado_y_detalle_byId/:IdCredito', verifyToken, creditoController.credito_eliminar_encabezado_y_detalle_byId);
 
 router.post('/credito_buscar', verifyToken, creditoController.credito_buscar);
+
+router.get('/credito_detalle_list_ById/:IdCredito', verifyToken, creditoController.credito_detalle_list_ById);
+
+router.post('/pagarCuota', verifyToken, creditoController.pagarCuota);
 
 module.exports = router;    

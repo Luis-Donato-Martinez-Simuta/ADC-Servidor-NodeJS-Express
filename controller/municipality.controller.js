@@ -17,7 +17,7 @@ const getMunicipalityById = async (req, res) => {
                 })
             } else {
                 let municipality = data;
-                //console.log(municipality);
+                
                 return res.status(200).json({
                     error: false,
                     status: 200,

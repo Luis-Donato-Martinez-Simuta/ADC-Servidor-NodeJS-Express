@@ -92,6 +92,9 @@ const ficha_pago_updateDate = (fichaPago, callback) => {
         ${fichaPago.IdFichaPago},
         '${fichaPago.fecha}'
     )`;
+
+    
+
     let connection = createConnection(conexion);
 
     connection.query(sql, (err, data) => {
@@ -132,7 +135,50 @@ const ficha_pago_list_ById = (IdFichaPago, callback) => {
         return callback(null);
 
     });
+}
 
+const ficha_pago_buscar = (referencia,callback) => {
+
+    let sql = `call ficha_pago_buscar('%${referencia}%')`;
+    let connection = createConnection(conexion);
+    
+    connection.query(sql, (err, data) => {
+
+        if (err) {
+            console.log(err);
+            connection.end();
+            return callback(-1);
+        };
+        if (data.length > 0) {
+            connection.end();
+            return callback(data[0])
+        };
+        connection.end();
+        return callback(null);
+
+    });
+}
+
+const ficha_pago_pagar = (IdFichaPago ,callback) => {
+
+    let sql = `call ficha_pago_pagar(${IdFichaPago})`;
+    let connection = createConnection(conexion);
+    
+    connection.query(sql, (err, data) => {
+
+        if (err) {
+            console.log(err);
+            connection.end();
+            return callback(-1);
+        };
+        if (data.length > 0) {
+            connection.end();
+            return callback(data[0])
+        };
+        connection.end();
+        return callback(null);
+
+    });
 }
 
 module.exports = {
@@ -140,5 +186,7 @@ module.exports = {
     ficha_pago_detalle_create,
     ficha_pago_list,
     ficha_pago_updateDate,
-    ficha_pago_list_ById
+    ficha_pago_list_ById,
+    ficha_pago_buscar,
+    ficha_pago_pagar,
 }
